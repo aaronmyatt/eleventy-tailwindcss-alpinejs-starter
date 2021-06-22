@@ -1,16 +1,12 @@
 module.exports = {
+  mode: 'jit',
   purge: {
-    content: ['_site/**/*.html'],
+    content: ['./**/*.pug'],
     options: {
       safelist: [],
     },
   },
   theme: {
-    extend: {
-      colors: {
-        change: 'black',
-      },
-    },
   },
   variants: {},
   plugins: [],

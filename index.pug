@@ -1,0 +1,22 @@
+
+extends _includes/default.pug
+
+block title
+  | #{home.content.seo.title}
+
+block content
+  .fixed.inset-0.flex.items-center.justify-center
+    div
+      span(class="text-blue-500 sm:text-red-500 md:text-purple-500") Good design
+      br
+      span is
+        br
+        | as little design
+        br
+        | as possible
+      br
+      span(x-data x-text="$store.home.body[0].name")
+      span  <--- injected from Storyblok!
+
+block alpine-data
+  | window.rawData = !{JSON.stringify(home)}

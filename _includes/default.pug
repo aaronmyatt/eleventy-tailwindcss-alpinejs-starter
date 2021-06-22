@@ -1,0 +1,33 @@
+doctype html
+- var ALPINE_DATA='alpine-data'
+
+html(lang="en")
+  head 
+    title
+      block title
+        | Overridable Title
+    meta(charset="UTF-8")
+    meta(name="description" content="#{description}")
+    meta(http-equiv="x-ua-compatible" content="ie=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover")
+    link(rel="stylesheet" href="/styles/tailwind.css")
+    block head
+    script(src="https://app.storyblok.com/f/storyblok-v2-latest.js" id="storyblokBridge")
+    script(src="/js/alpine.js" defer)
+    block head-scripts
+  body 
+    block content
+    
+    script(id=ALPINE_DATA content-type="application/json")
+      block alpine-data
+        | window.rawData = {slug:''}
+      
+    script.
+      document.addEventListener('alpine:init', function() {
+        if(window.rawData){
+          var data = window.rawData
+          Alpine.store(data.slug, data.content);
+        }
+      });
+    script(src="/js/storyblok-bridge.js")
+    block body-scripts
